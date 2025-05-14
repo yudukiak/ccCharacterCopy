@@ -29,6 +29,42 @@ function appendCCCButtons(targetElm, ccc) {
     }
   }));
 
+  // 更新
+  outerDivElm.appendChild(createButton('ccc-chara-diff', '比較', () => {
+    try {
+      const character = ccc.getCharacter();
+      console.log('[CCC] - character:', character);
+      // モーダルの枠
+      const rootElm = document.querySelector('div[role="presentation"].MuiDialog-root div.MuiPaper-root');
+      // 編集枠を非表示
+      rootElm.querySelector('.MuiDialogContent-root').style.display = 'none';
+      // ボタン枠を非表示
+      rootElm.querySelector('.MuiDialogActions-root').style.display = 'none';
+      // メモ枠のクラス名を取得
+      const muiDialogContentClassName = rootElm.querySelector('.MuiDialogContent-root').className;
+      const muiFormControlClassName = rootElm.querySelector('.MuiFormControl-root').className;
+      const muiInputBaseClassName = rootElm.querySelector('.MuiInputBase-root').className;
+      const labelClassName = rootElm.querySelector('.MuiFormLabel-root').className;
+      const textareaClassName = rootElm.querySelector('.MuiInputBase-input').className;
+      // JSONを記入させる枠を作成＆表示
+      const divElm = document.createElement('div');
+      divElm.id = 'ccc-chara-diff-json';
+      divElm.className = muiDialogContentClassName;
+      divElm.innerHTML = `
+      <div class="${muiFormControlClassName}">
+        <label class="${labelClassName}">JSONを記入</label>
+        <div class="${muiInputBaseClassName}">
+          <textarea id="ccc-chara-diff-json" class="${textareaClassName}" rows="8" style="height: 184px;"></textarea>
+        </div>
+      </div>
+      `;
+      rootElm.appendChild(divElm);
+    } catch (error) {
+      console.log('[CCC] - error:', error);
+      alert(`[CCC] 駒の比較に失敗しました😭\n\nerror: ${error}`);
+    }
+  }));
+
   targetElm.parentNode.insertBefore(outerDivElm, targetElm.nextSibling);
 }
 

@@ -17,6 +17,7 @@
       ],
       "resources": [
         "js/getCharacter.js",
+        "js/checkCharacterDiff.js",
         "js/ccc.js"
       ]
     }
