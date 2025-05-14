@@ -1,0 +1,18 @@
+#ccc {
+  display: flex;
+  gap: 1rem;
+  padding-right: 1rem;
+}
+
+#ccc > button {
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  border: none;
+  background-color: oklch(97% 0 0);
+  color: oklch(14.5% 0 0);
+  cursor: pointer;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+  &:hover {
+    background-color: oklch(87% 0 0);
+  }
+}
